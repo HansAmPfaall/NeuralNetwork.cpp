@@ -13,7 +13,7 @@ class Matrix {
     _colNum = cols;
     _storage.resize(rows * cols);
     for (int i = 0; i < rows * cols; i++) {
-      _storage[i] = ((double)rand() / RAND_MAX);
+      _storage[i] = 2*(((double)rand() / RAND_MAX) - ((double)rand() / RAND_MAX));
     }
   }
 
