@@ -1,4 +1,4 @@
-CXX = g++ -std=c++11 -O3
+CXX = g++ -std=c++11 -O3 -Wall
 CHECKSTYLE = python ../cpplint.py
 MAIN = $(basename $(wildcard *Main.cpp))
 TEST = $(basename $(wildcard *Test.cpp))
