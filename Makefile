@@ -15,13 +15,20 @@ compile: $(MAIN)
 run:
 	./$(MAIN)
 
+test: $(TEST)
+	for T in $(TEST); do ./$$T; done
+
 %Main: %Main.o $(OBJECTS)
+	$(CXX) -o $@ $^ $(LIBS)
+
+%Test: %Test.o $(OBJECTS)
 	$(CXX) -o $@ $^ $(LIBS)
 
 %.o: %.cpp $(HEADERS)
 	$(CXX) -c $<
 
 clean:
-	rm -f *.o
-	rm -f *.tmp
-	rm -f $(MAIN)
+	@rm -f *.o
+	@rm -f *.tmp
+	@rm -f $(MAIN)
+	@rm -f $(TEST)
