@@ -4,13 +4,15 @@
 class NeuralNetwork {
  public:
   // Constructor.
-  NeuralNetwork(int input, int hidden, int output);
+  NeuralNetwork(int input, int hidden, int output, float lr);
   // Destructor.
   ~NeuralNetwork();
 
   std::vector<float> calc(std::vector<float> input_array);
 
   void train(std::vector<float> input_array, std::vector<float> target_array);
+
+  void trainN(std::vector<float> input_array, std::vector<float> target_array);
 
   float learning_rate;
 
