@@ -74,7 +74,7 @@ void NeuralNetwork::trainN(std::vector<float> input_array,
   Matrix t2_t = t2.t();
   t2_t = t2_t.mult(inputs_t);
   // Matrix testo = ((hidden_errors * hidden * (n_hidden)) * inputs_t);
-  t2.mult(learning_rate);
+  t2_t.mult(learning_rate);
   input_hidden_w += t2_t;
 }
 
