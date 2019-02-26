@@ -1,0 +1,2 @@
+w = np.random.randn(colNum, rowNum) * np.sqrt(1/rowNum)
+w = np.random.randn(colNum, rowNum) * np.sqrt(2/(rowNum + colNum)
