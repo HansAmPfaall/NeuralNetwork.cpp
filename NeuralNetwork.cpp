@@ -64,8 +64,6 @@ void NeuralNetwork::trainN(std::vector<float> input_array,
   Matrix n_hidden = Matrix(hidden._rowNum, hidden._colNum, 1) - hidden;
   Matrix inputs_t = inputs.t();
 
-
-
   Matrix t2(hidden._colNum, hidden._rowNum, 0);
   for (int i = 0; i < hidden._rowNum * hidden._colNum; i++) {
     t1._storage[i] =

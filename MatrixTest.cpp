@@ -30,25 +30,20 @@ int main(int argc, char const *argv[]) {
   {
     std::vector<float> v1;
     std::vector<float> v2;
-    for (int i = 0; i < 2*3; i++) {
+    for (int i = 0; i < 2 * 3; i++) {
       v1.push_back(i);
-      v2.push_back((5*5)-i);
+      v2.push_back((5 * 5) - i);
     }
     Matrix a(2, 3, v1);
     Matrix b(3, 2, v2);
     Matrix c = a * b;
     std::vector<float> v3{65, 62, 272, 260};
-    for (int i = 0; i < 2*2; i++) {
+    for (int i = 0; i < 2 * 2; i++) {
       assert(c._storage[i] == v3[i]);
     }
   }
   std::cout << "Matrixmultiplikation Succesfull" << std::endl;
   std::cout << std::endl;
-
-  
-
-
-
 
   std::cout << "ALL TESTS SUCCESFULL" << std::endl;
 
