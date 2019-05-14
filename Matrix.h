@@ -7,7 +7,7 @@
 class Matrix {
  public:
   // ___________________________________________________________________________
-  // Constructor for Matriux with random values.
+  // Constructor for Matrix with random values.
   Matrix(int rows, int cols) {
     _rowNum = rows;
     _colNum = cols;
@@ -15,6 +15,7 @@ class Matrix {
     for (int i = 0; i < rows * cols; i++) {
       _storage[i] =
           2 * (((double)rand() / RAND_MAX) - ((double)rand() / RAND_MAX));
+          // std::cout << _storage[i] << std::endl;
     }
   }
 
@@ -105,6 +106,25 @@ class Matrix {
   void add(float x) {
     for (int i = 0; i < _rowNum * _colNum; i++) {
       _storage[i] += x;
+    }
+  }
+
+  std::vector<float> normalize() {
+    std::vector<float> temp;
+    temp.resize(_rowNum * _colNum);
+    float size = 0.0;
+    for (int i = 0; i < _rowNum * _colNum; i++) {
+      size += _storage[i];
+    }
+    for (int i = 0; i < _rowNum * _colNum; i++) {
+      temp[i] = _storage[i] / size;
+    }
+    return temp;
+  }
+
+  void mutate() {
+    for (int i = 0; i < _rowNum * _colNum; i++) {
+      _storage[i] += _storage[i] * 2;
     }
   }
 
