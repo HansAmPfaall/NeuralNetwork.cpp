@@ -45,6 +45,26 @@ int main(int argc, char const *argv[]) {
   std::cout << "Matrixmultiplikation Succesfull" << std::endl;
   std::cout << std::endl;
 
+
+    std::cout << "Start Matrixsubtraction" << std::endl;
+  {
+    std::vector<float> v1;
+    std::vector<float> v2;
+    for (int i = 0; i < 20 * 20; i++) {
+      v1.push_back(i);
+      v2.push_back(i);
+    }
+    Matrix a(20, 20, v1);
+    Matrix b(20, 20, v2);
+    Matrix c = a - b;
+    std::vector<float> v3{0, 0, 0, 0};
+    for (int i = 0; i < 2 * 2; i++) {
+      assert(c._storage[i] == v3[i]);
+    }
+  }
+  std::cout << "Matrixsubtraction Succesfull" << std::endl;
+  std::cout << std::endl;
+
   std::cout << "ALL TESTS SUCCESFULL" << std::endl;
 
   // auto start = std::chrono::system_clock::now();
