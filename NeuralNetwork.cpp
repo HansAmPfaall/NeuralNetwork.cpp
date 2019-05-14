@@ -23,12 +23,13 @@ std::vector<float> NeuralNetwork::calc(std::vector<float> input_array) {
   Matrix inputs(input_array.size(), 1, input_array);
   Matrix hidden = input_hidden_w * inputs;
   // hidden += bias_hidden_w;
+  
   hidden.sigmoid();
+
 
   Matrix output = hidden_output_w * hidden;
   // output += bias_output_w;
   output.sigmoid();
-
   return output.toVector();
 }
 
@@ -43,8 +44,10 @@ void NeuralNetwork::trainN(std::vector<float> input_array,
 
   Matrix output = hidden_output_w * hidden;
   output.sigmoid();
-
+  // output.print();
+  // targets.print();
   Matrix output_errors = targets - output;
+
   Matrix hidden_output_w_t = hidden_output_w.t();
   Matrix hidden_errors = hidden_output_w_t * output_errors;
 
@@ -56,7 +59,7 @@ void NeuralNetwork::trainN(std::vector<float> input_array,
     t1._storage[i] =
         output_errors._storage[i] * output._storage[i] * n_output._storage[i];
   }
-  t1 = t1.mult(hidden_t);
+  t1 = t1.t().mult(hidden_t);
   // Matrix test = ((output_errors * output * (n_output)) * hidden_t);
   t1.mult(learning_rate);
   hidden_output_w += t1;
@@ -74,6 +77,11 @@ void NeuralNetwork::trainN(std::vector<float> input_array,
   // Matrix testo = ((hidden_errors * hidden * (n_hidden)) * inputs_t);
   t2_t.mult(learning_rate);
   input_hidden_w += t2_t;
+}
+
+void NeuralNetwork::mutate() {
+  input_hidden_w.mutate();
+  hidden_output_w.mutate();
 }
 
 void NeuralNetwork::train(std::vector<float> input_array,

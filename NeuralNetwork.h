@@ -14,6 +14,8 @@ class NeuralNetwork {
 
   void trainN(std::vector<float> input_array, std::vector<float> target_array);
 
+  void mutate();
+
   float learning_rate;
 
   Matrix input_hidden_w;
